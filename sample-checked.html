@@ -5,72 +5,44 @@
 
 <h2>Getting input with radio buttons and checkboxes</h2>
 
-    <form>
-        <input type="radio" id="rg1_red" name="color" value="red"   
-          checked >
-        <label for="rg1_red">Red</label></br>
-      
-        <input type="radio" id="rg1_blue" name="color" 
-           value="blue">
-        <label for="rg1_blue">Blue</label></br>
-      
-        <input type="radio" id="rg1_green" name="color"   
-           value="green">
-        <label for="rg1_green">Green</label></br>
+<form>
+  <label for="sumRadio">Sum</label>
+  <input type="radio" id="sumRadio" name="operation" value="sum" onclick="chooseOp()">
+  
+  <label for="diffRadio">Difference</label>
+  <input type="radio" id="diffRadio" name="operation" value="difference" onclick="chooseOp()">
+  
+  <label for="multRadio">Product</label>
+  <input type="radio" id="multRadio" name="operation" value="product" onclick="chooseOp()">
+</form>
 
-        <input type="button" onclick="resolveRadio()" value="Get values from radio group">
-      </form>
-      
-      <form>
-        <input type="checkbox" id="cb1_cheese" name="topping1"   
-          value="cheese" checked>
-        <label for="cb1_cheese">I want cheese</label></br>
-      
-        <input type="checkbox" id="cb1_olive" name="topping2" 
-           value="olive">
-        <label for="cb1_olive">I want olives</label></br>
-      
-        <input type="checkbox" id="cb1_onion" name="topping3"   
-           value="onion" checked>
-        <label for="cb1_onion">I want onions</label></br>
-
-        <input type="button" onclick="resolveCheck()" value="Get values from check boxes">
-      </form>
-      
-
-
-<p id="result">This text will be replaced </p>
+<p id="result"></p>
 
 <script> 
-function resolveCheck() {
-    console.log("Getting input")
-    cheese = document.getElementById("cb1_cheese").checked
-    olives = document.getElementById("cb1_olive").checked
-    onions = document.getElementById("cb1_onion").checked
-    confirmed = confirm("Are these the values? "+cheese+" and "+olives+" and "+onions)
-    
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
-    }
-}
+  function chooseOp() {
+            var baseAmount = parseFloat(document.getElementById("baseAmount").value);
+            var tipPercent = parseFloat(document.getElementById("tipPercent").value);
 
-function resolveRadio() {
-    console.log("Getting input")
-    redOpt = document.getElementById("rg1_red").checked
-    blueOpt = document.getElementById("rg1_blue").checked
-    greenOpt = document.getElementById("rg1_green").checked
-    confirmed = confirm("Are these the values? "+redOpt+" and "+blueOpt+" and "+greenOpt)
-    
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
-    }
-}
+            var operation = document.querySelector('input[name="operation"]:checked').value;
+            var result;
+
+            switch (operation) {
+                case "sum":
+                    result = baseAmount + tipPercent;
+                    document.getElementById("result").innerHTML = "Sum of " + baseAmount + " and " + tipPercent + " is " + result;
+                    break;
+                case "difference":
+                    result = baseAmount - tipPercent;
+                    document.getElementById("result").innerHTML = "Difference of " + baseAmount + " and " + tipPercent + " is " + result;
+                    break;
+                case "product":
+                    result = baseAmount * tipPercent;
+                    document.getElementById("result").innerHTML = "Product of " + baseAmount + " and " + tipPercent + " is " + result;
+                    break;
+                default:
+                    break;
+            }
+        }
 
 </script>
 
