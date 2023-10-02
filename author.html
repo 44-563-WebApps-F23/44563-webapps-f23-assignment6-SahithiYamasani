@@ -26,12 +26,16 @@
     Good: <span id="good-count">0</span></br>
     Oops: <span id="oops-count">0</span>
 </div>
+</br>
 
+<div>
+    <img id="cityImage" src="Agra.jpg" alt="City Image" width="100" height="100" onclick="selectImage()">
+</div>
 <script>
     // Global variables
     var good = 0;
     var oops = 0;
-    
+    var useImage = 1;
     // Function to check the author guess
     function checkAuthor() {
         // Get the values from input elements
@@ -51,6 +55,28 @@
         document.getElementById("good-count").innerHTML = good;
         document.getElementById("oops-count").innerHTML = oops;
     }
+
+    function selectImage() {
+            var imageElement = document.getElementById("cityImage");
+
+            // Use a switch statement to determine the next image
+            switch (useImage) {
+                case 1:
+                    imageElement.src = "Mysore.jpg";
+                    useImage = 2;
+                    break;
+                case 2:
+                    imageElement.src = "srinagar.jpg";
+                    useImage = 3;
+                    break;
+                case 3:
+                    imageElement.src = "Agra.jpg"; // Wrap back to the first image
+                    useImage = 1;
+                    break;
+                default:
+                    break;
+            }
+        }
 </script>
 
 </body>
