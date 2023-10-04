@@ -2,23 +2,42 @@
 <html>
  <head>
     <title>Author - Sahithi Yamasani</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" 
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
  </head>
-<body>
+    <body style="background-color: lightyellow">
+</br>
+</br>
 
 
-<h1> Author entry - Sahithi Yamasani </h1>
-<h2>Getting input</h2>
+
+
+<div class="container py-3 row mx-auto col-sm-6 card card-header bg-light form-group">
+    <h3 class="mb-0"> Author entry - Sahithi Yamasani </h3>
+</br>
+    <h3 class="mb-0">Getting input</h3>
 
 <form>
-    <label for="hidden-author">The hidden author name</label>
-    <input type="password" id="hidden-author" value="Dickens">
+    <label class="col-lg-3 col-form-label form-control-label" for="hidden-author">The hidden author name</label>
+    <div class="col-lg-5">
+        <input type="password" class="form-control" id="hidden-author" value="Dickens">
+    </div>
     </br>    
         <!-- Input to check the guess -->
-    <label for="guess-author">Guess the author</label>
-    <input type="text" id="guess-author">
+    <label class="col-lg-3 col-form-label form-control-label" for="guess-author">Guess the author</label>
+    <div class="col-lg-5">
+        <input type="text" class="form-control" id="guess-author">
+    </div>
     </br>
-    <input type="button" onclick="checkAuthor()" value="Check the guess">
-</br>
+        <input class="btn btn-outline-secondary" type="button" id="guessbutton" onclick="checkAuthor()" value="Check the guess">
+    </br>
 </form>
 
 </br>
@@ -31,6 +50,10 @@
 <div>
     <img id="cityImage" src="Agra.jpg" alt="City Image" width="100" height="100" onclick="selectImage()">
 </div>
+</div>
+</br>
+</br>
+</br>
 <script>
     // Global variables
     var good = 0;
@@ -41,19 +64,32 @@
         // Get the values from input elements
         var hiddenAuthor = document.getElementById("hidden-author").value;
         var guessAuthor = document.getElementById("guess-author").value;
-        
         // Compare the values
+       
+
         if (hiddenAuthor === guessAuthor) {
             good++; // Increment the 'good' count
             alert("You got it right!");
-        } else {
+        } 
+        else
+        {
             oops++; // Increment the 'oops' count
-            alert("Sorry");
+            if(oops >=7)
+            {
+                document.getElementById('guessbutton').onclick = function()
+                 {
+                    alert("Sorry ran out of guess");
+                 }
+            }
+            else
+            {
+                alert("Sorry");
+            }
         }
-        
+       
         // Update the innerHTML for the results element
         document.getElementById("good-count").innerHTML = good;
-        document.getElementById("oops-count").innerHTML = oops;
+        document.getElementById("oops-count").innerHTML = oops;       
     }
 
     function selectImage() {

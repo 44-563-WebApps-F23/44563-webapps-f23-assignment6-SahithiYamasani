@@ -19,7 +19,7 @@
 <p id="result"></p>
 
 <script> 
-  function chooseOp() {
+ function chooseOp() {
             var baseAmount = parseFloat(document.getElementById("baseAmount").value);
             var tipPercent = parseFloat(document.getElementById("tipPercent").value);
 
@@ -39,7 +39,7 @@
                     result = baseAmount * tipPercent;
                     document.getElementById("result").innerHTML = "Product of " + baseAmount + " and " + tipPercent + " is " + result;
                     break;
-                default:
+                 default:
                     break;
             }
         }
